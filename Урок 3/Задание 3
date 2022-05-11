@@ -1,0 +1,10 @@
+print('Как вас зовут?')
+your_name = input()
+
+print('Как ваша фамилия?')
+your_surname = input()
+
+print('Как ваше отчество?')
+your_patronymic = input()
+
+print(your_name,your_surname, your_patronymic, sep='-')
