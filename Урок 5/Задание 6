@@ -1,0 +1,11 @@
+sector = int(input())
+
+if sector >= 0 and sector <= 36:
+    if 1 <= sector <= 10 or 19 <= sector <= 28:
+        print('Черное')
+    elif 11 <= sector <= 18 or 29 <= sector <= 36:
+        print('Красное')
+    else:
+        print('Зеро')
+else:
+    print('Ошибка')
