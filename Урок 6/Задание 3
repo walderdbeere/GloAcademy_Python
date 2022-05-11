@@ -1,0 +1,10 @@
+a = 'Недавно проходил обучение в Academy.'
+b = 'Недавно проходил обучение'
+c = 'Недавно проходил обучение в Academy. Все очень круто'
+
+if len(a) > len(b) and len(a) > len(c):
+    print(a)
+elif len(b) > len(c):
+    print(b)
+else:
+    print(c)
