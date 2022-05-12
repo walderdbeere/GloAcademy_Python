@@ -2,7 +2,7 @@ a = int(input())
 orig = a
 summ = 0
 
-while a % 10 != 0:
+while a != 0:
     summ = summ + a % 10 
     a = a // 10    
     
