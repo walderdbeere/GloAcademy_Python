@@ -1,0 +1,11 @@
+n = int(input())
+summ = 0
+score = 0
+
+while n != 0:  
+    summ = summ + n
+    score = score + 1
+
+    n = int(input())
+    
+print(summ / score)
