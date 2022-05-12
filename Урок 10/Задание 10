@@ -1,0 +1,2 @@
+s = 'Я иду на курс по Python!'
+print(s.count(chr(32))+1)
