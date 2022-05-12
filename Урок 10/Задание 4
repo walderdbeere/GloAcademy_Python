@@ -1,0 +1,8 @@
+n = input()
+
+if 65 <= ord(n) <= 90:
+    print(n.lower())
+elif 97 <= ord(n) <= 122:
+    print(n.upper())
+else:
+    print(n)
