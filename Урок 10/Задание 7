@@ -1,0 +1,5 @@
+sur = input()
+nam = input()
+pat = input()
+
+print(f'{sur[0].upper()}{sur[1:]} {nam[0].upper()}.{pat[0].upper()}.')
