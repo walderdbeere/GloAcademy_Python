@@ -1,0 +1,6 @@
+n = input()
+
+if 1040 <= ord(n) <= 1071 :
+    print('YES')
+else:
+    print('NO')
