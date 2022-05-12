@@ -1,7 +1,7 @@
 a = int(input())
 score = 0
 
-while a % 10 != 0:
+while a != 0:
     if a % 10 == 5:
         score = score + 1
     a = a // 10
