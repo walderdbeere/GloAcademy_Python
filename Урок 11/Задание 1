@@ -1,0 +1,12 @@
+size = int(input())
+base = []
+
+for i in range(size):
+    s = input()
+    base.append(s)
+
+f = input()
+
+for i in base:
+    if f.casefold() in i.casefold():
+        print(i)
