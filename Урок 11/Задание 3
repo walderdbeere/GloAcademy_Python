@@ -1,0 +1,7 @@
+n = '192.168.280.1'
+l = n.split('.')
+
+if int(max(l)) > 255 or int(min(l)) < 0:
+    print('NO')
+else:
+    print('YES')
