@@ -1,0 +1,5 @@
+n = 'D:\MyDocuments\Python\Courses\план обучения.txt'
+l = n.split('\\')
+
+for i in l:
+    print(i)
