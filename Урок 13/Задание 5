@@ -1,0 +1,23 @@
+print(f'Играем в игру. Установите максимальное число')
+max_limit = int(input())
+min_limit = 1
+counter = 0
+
+print(f'Тепрь загадайте число от {min_limit} до {max_limit}')
+secret = int(input())
+
+while True:
+    counter += 1
+    suppose = (min_limit + max_limit) // 2
+    
+    if suppose == secret:
+        print(f'Ответ {suppose} найден всего за {counter} ходов') 
+        break
+
+    elif suppose > secret:
+        max_limit = suppose
+        continue
+
+    elif suppose < secret:
+        min_limit = suppose
+        continue
