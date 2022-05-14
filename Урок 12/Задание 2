@@ -1,0 +1,9 @@
+def max_element(elem):
+    temp = elem.split()
+    return int(max(temp, key=int))
+
+n1 = '1 3 22 13'
+n2 = '2 5 4 9'
+
+r = max_element(n1) * max_element(n2)
+print(r)
