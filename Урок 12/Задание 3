@@ -1,0 +1,6 @@
+def days(m):
+    l = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    return l[m - 1]
+
+m = int(input())
+print(days(m))
