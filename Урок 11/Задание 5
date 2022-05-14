@@ -1,0 +1,7 @@
+n = '1 3 2 4 2'
+new_list = n.split()
+
+for i in new_list:
+    temp = new_list.count(i)
+    if temp == 1:
+        print(i, end=' ')
