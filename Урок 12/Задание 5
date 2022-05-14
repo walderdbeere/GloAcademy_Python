@@ -1,0 +1,15 @@
+n = '10.06.1960'
+m = '20.07.1960'
+
+def star_date(arg):
+    temp = arg.split('.')
+
+    d = int(temp[0])
+    m = int(temp[1])
+    y = int(temp[2]) % 100
+
+    return True if d * m == y else False
+    
+
+print(star_date(n))
+print(star_date(m))
