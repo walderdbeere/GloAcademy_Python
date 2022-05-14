@@ -1,0 +1,9 @@
+def numeric(digit):
+    counter = 0
+
+    while digit != 0:
+        counter += 1
+        digit //= 10
+    return counter
+
+print(numeric(1995) * numeric(243))
