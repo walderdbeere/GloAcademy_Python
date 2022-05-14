@@ -1,0 +1,11 @@
+n = '1 2 3 4 3 2 1'
+new_list = n.split()
+counter = 0
+
+for i in range(len(new_list)):
+    temp = new_list.pop(0)
+    for j in new_list:
+        if temp == j:
+            counter += 1
+
+print(counter)
