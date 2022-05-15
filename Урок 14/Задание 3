@@ -1,0 +1,86 @@
+import random
+
+pass_digits = '0123456789'
+pass_latin_uppercase = 'ABCDEFGHIJKLMNOPQRSTUVXYZ'
+pass_latin_lowercase = 'abcdefghijklmnopqrstuvxyz'
+pass_cyrillic_lowercase = 'абвгдежзиклмнопрстуфхцчшщъыьэюя'
+pass_cyrillic_uppercase = 'АБВГДЕЖЗИКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ'
+pass_punctuation = '!@#$%^&*+-=?_'
+
+def pass_yesno_quests(quest):
+    print(f'{quest} Нажмите Да/Нет (Y/N)...')
+    answer = input()
+    if answer == 'Да' or answer == 'Д' or answer == 'д' or answer == 'Y' or answer == 'y':
+        return True
+    else:
+        return False
+
+def pass_generate(l, chars):
+    pswd = ''
+    
+    for _ in range(l):
+        i = random.randint(0, len(chars) - 1)
+        pswd += chars[i]
+
+    return pswd
+
+def pass_params():
+    while True:
+        print('Введите длину пароля')
+        pass_lenght = input()
+        
+        if not pass_lenght.isdigit() or int(pass_lenght) <= 0:
+            continue
+        else:
+            pass_lenght = int(pass_lenght)
+            break
+
+
+    while True: 
+        pass_enabled_chars = ''
+
+        pass_digits_enabled = pass_yesno_quests('Добавить в пароль цифры?')
+        pass_latin_uppercase_enabled = pass_yesno_quests('Добавить в пароль заглавные буквы?')
+        pass_latin_lowercase_enabled = pass_yesno_quests('Добавить в пароль строчные буквы?')
+        pass_cyrillic_uppercase_enabled = pass_yesno_quests('Добавить в пароль русские заглавные буквы?')
+        pass_cyrillic_lowercase_enabled = pass_yesno_quests('Добавить в пароль русские строчные буквы?')
+        pass_punctuation_enabled = pass_yesno_quests('Добавить в пароль знаки пунктуации?')
+
+        if pass_digits_enabled:
+            pass_enabled_chars += pass_digits
+
+        if pass_latin_uppercase_enabled:
+            pass_enabled_chars += pass_latin_uppercase
+
+        if pass_latin_lowercase_enabled:
+            pass_enabled_chars += pass_latin_lowercase
+
+        if pass_cyrillic_lowercase_enabled:
+            pass_enabled_chars += pass_cyrillic_lowercase
+
+        if pass_cyrillic_uppercase_enabled:
+            pass_enabled_chars += pass_cyrillic_uppercase
+
+        if pass_punctuation_enabled:
+            pass_enabled_chars += pass_punctuation
+
+        if not len(pass_enabled_chars) > 0:
+            continue
+        else:
+            break
+
+    while True:
+        print('Сколько паролей сгенерить?')
+        pass_quantity = input()
+        
+        if not pass_quantity.isdigit() or int(pass_quantity) <= 0:            
+            continue
+        else:
+            pass_quantity = int(pass_quantity)
+            break    
+
+    for _ in range(pass_quantity):
+        result = pass_generate(pass_lenght, pass_enabled_chars)
+        print(result)
+
+pass_params()
