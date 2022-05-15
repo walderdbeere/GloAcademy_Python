@@ -1,0 +1,95 @@
+def create_field():
+    field = []
+    for i in range(3):
+        field.append(['.'] * 3)
+
+    return field
+
+def print_field(field):
+    for i in range(3):
+        for j in range(3):
+            print(field[i][j], end='')
+        print()
+
+def win(field):
+    for i in range(3):
+        if field[i][0] != '.' and field[i][0] == field[i][1] == field[i][2]:
+            return True
+
+    for i in range(3):
+        if field[0][i] != '.' and field[0][i] == field[1][i] == field[2][i]:
+            return True
+
+    for i in range(3):
+        if field[0][0] != '.' and field[0][0] == field[1][1] == field[2][2]:
+            return True   
+
+    for i in range(3):
+        if field[0][2] != '.' and field[0][2] == field[1][1] == field[2][0]:
+            return True               
+    
+    return False
+
+def end_game(field):
+    if win(field):
+        return True
+
+    for i in range(3):
+        for j in range(3):
+            if field[i][j] == '.':
+                return False
+    
+    return True
+
+def check_coords(m):
+    print(m)
+    while True:
+        n = input()
+        if not n.isdigit() or int(n) < 1 or int(n) > 3:
+            continue
+        else:
+            break
+        
+    print(int(n))
+    return int(n)
+
+def start_game():
+    field = create_field()
+    current_symbol = 'x'
+
+    while not end_game(field):
+        print_field(field)
+        row = check_coords('Введите номер строки')
+        col = check_coords('Введите номер столбца')
+
+        field[row-1][col-1] = current_symbol
+
+        if current_symbol == 'x':
+            current_symbol = '0'
+        else:
+            current_symbol = 'x'
+
+    print_field(field)
+    
+    if current_symbol == 'x':
+        print('Ура, победили O')
+    else:
+        print('Ура, победили X')
+
+
+def play():
+    start_game()
+    while True:
+        print('Хотите сыграть еще? Y(Д)/N(Н)')
+        answer = input()
+
+        if answer == 'Y' or answer == 'y' or answer == 'Д' or answer == 'д':
+            start_game()
+        elif answer == 'N' or answer == 'n' or answer == 'Н' or answer == 'н':
+            print('Спасибо за игру. Ждем вас еще!')
+            break
+        else:
+            print('Не понял ваш ответ...')
+            continue
+
+play()
