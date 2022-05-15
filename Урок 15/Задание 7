@@ -1,0 +1,94 @@
+import random
+
+def quest_base():
+    q = ['Наименование научных учреждений и учебных заведений',
+        'Наука об отношениях между объектами, о которых ничего не известно, кроме описывающих их некоторых свойств',
+        'Как называется единственное в Европе герцогство?',
+        'Кто из русских лётчиков первым применил таран в воздушном бою?',
+        'Прежнее название республики Бангладеш?',
+        'Что коллекционировал германский канцлер Отто фон Бисмарк?',
+        'Какое животное является неофициальным символом демократической партии США?',
+        'Какая страна является родиной хереса?',
+        'Самый крупный орех?',
+        'Какое растение почитается в качестве символа Ирландии?',
+        'Какой термин означает краткое и меткое наставительное изречение?'
+        ]
+    a = ['Академия',
+        'Математика',
+        'Люксембург',
+        'Нестеров',
+        'Бенгалия',
+        'Градусники',
+        'Осел',
+        'Испания',
+        'Сейшельский',
+        'Клевер',
+        'Апофегма'
+        ]
+    
+    i = random.randint(0, len(q) - 1)
+    print(q[i])
+    return a[i]
+
+def update_user_word(secret_word, user_word, char):
+    new_user_word = ''
+
+    for i in range(len(secret_word)):
+        if secret_word[i] == char:            
+            new_user_word += char
+        else:
+            new_user_word += user_word[i] 
+
+    return new_user_word  
+
+
+def play_game():    
+    secret_word = quest_base()
+    user_word = ''
+    for _ in range(len(secret_word)):
+        user_word += '*'    
+    print(user_word)
+    attempts = 0
+
+    while user_word.lower() != secret_word.lower():
+        print('Введите букву')
+        user_char = input()
+
+        if len(user_char) != 1 or ord(user_char) < 1040 or ord(user_char) > 1103:
+            continue
+        elif user_char.lower() in user_word.lower():
+            print('Эту букву уже отгадали')
+            continue
+
+        new_user_word = update_user_word(secret_word.lower(), user_word.lower(), user_char.lower())
+        attempts += 1
+
+        if user_word == new_user_word:
+            print('Нет такой буквы!')
+        else:
+            print('Есть такая буква!')
+
+        user_word = new_user_word
+        print(user_word)
+
+    print(f'Ура, вы угадали всего за {attempts} попыток')    
+
+
+def play_again():
+    play_game()
+
+    while True:
+        print('Хотите сыграть еще? Y(Д)/N(Н)')
+        answer = input()
+
+        if answer == 'Y' or answer == 'y' or answer == 'Д' or answer == 'д':
+            play_game()
+        elif answer == 'N' or answer == 'n' or answer == 'Н' or answer == 'н':
+            print('Спасибо за игру. Ждем вас еще!')
+            break
+        else:
+            print('Не понял ваш ответ...')
+            continue
+
+
+play_again()
