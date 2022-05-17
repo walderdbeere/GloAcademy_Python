@@ -1,0 +1,50 @@
+def run_test(questions, answers):
+    count_right_answers = 0
+
+    for i in range(len(questions)):
+        print('Вопрос номер:', i + 1)
+        print(questions[i])
+        user_answer = int(input())
+        right_answer = answers[i]
+
+        if user_answer == right_answer:
+            count_right_answers += 1
+    
+    return count_right_answers
+
+def start_test():    
+    questions = [
+    'Сколько будет два плюс два умноженное на два?',
+    'Бревно нужно распилить на 10 частей, сколько надо сделать распилов?',
+    'На двух руках 10 пальцев, сколько пальцев на 5 руках?',
+    'Укол делают каждые полчаса, сколько минут нужно для трех уколов?',
+    'Пять свечей горело, две погасли. Сколько свечей осталось?',
+    ]
+    answers = [6, 9, 25, 60, 2]
+    grade = ['Идиот', 'Кретин', 'Дурак', 'Нормальный', 'Талант', 'Гений']    
+
+    user_name  = input('Здравствуйте, представьтесь, пожалуйста:')
+    print('Здравствуйте,', user_name, 'вам необходимо пройти тест из', len(questions), 'вопросов')
+    
+    count_right_answers = run_test(questions, answers)
+    print(count_right_answers)
+    print(user_name, 'вы', grade[count_right_answers])
+
+
+def play():
+    start_test()
+    while True:
+        print('Хотите пройти тестирование еще раз? Y(Д)/N(Н)')
+        answer = input()
+
+        if answer == 'Y' or answer == 'y' or answer == 'Д' or answer == 'д':
+            start_test()
+        elif answer == 'N' or answer == 'n' or answer == 'Н' or answer == 'н':
+            print('Спасибо. Удачи!')
+            break
+        else:
+            print('Не понял ваш ответ...')
+            continue
+
+
+play()
