@@ -1,0 +1,102 @@
+import random
+
+
+def check_answer():
+    while True:
+        answer = input()
+
+        if not answer.isdigit():
+            print('Пожалуйста, введите число!')
+            continue
+        else:
+            break
+
+    return int(answer)
+
+
+def run_test(questions, answers):
+    count_right_answers = 0
+
+    for i in range(len(questions)):
+        j = random.randint(0, len(questions) - 1)
+
+        print('Вопрос номер:', i + 1)
+        print(questions[j])
+        user_answer = check_answer()
+        right_answer = answers[j]
+
+        if user_answer == right_answer:
+            count_right_answers += 1
+
+        questions.pop(j)
+        answers.pop(j)
+
+    return count_right_answers
+
+
+def check_result(user_name, count_right_answers):
+    grade = ['Идиот', 'Кретин', 'Дурак', 'Нормальный', 'Талант', 'Гений']
+
+    if count_right_answers >= 5:
+        count_right_answers = 5
+
+    print(count_right_answers)
+    print(f'{user_name}, вы {grade[count_right_answers]}')
+
+    result = str(user_name) + ',' + str(count_right_answers) + \
+        ',' + str(grade[count_right_answers] + '\n')
+    file = open('test_results.txt', 'a')
+    file.write(result)
+    file.close()
+
+
+def start_test():
+    questions = [
+        'Сколько будет два плюс два умноженное на два?',
+        'Бревно нужно распилить на 10 частей, сколько надо сделать распилов?',
+        'На двух руках 10 пальцев, сколько пальцев на 5 руках?',
+        'Укол делают каждые полчаса, сколько минут нужно для трех уколов?',
+        'Пять свечей горело, две погасли. Сколько свечей осталось?',
+    ]
+    answers = [6, 9, 25, 60, 2]
+
+    user_name = input('Здравствуйте, представьтесь, пожалуйста:')
+    print(
+        f'Здравствуйте, {user_name}, вам необходимо пройти тест из {len(questions)} вопросов')
+
+    count_right_answers = run_test(questions, answers)
+    check_result(user_name, count_right_answers)
+
+
+def play():
+    start_test()
+    while True:
+        print('Хотите пройти тестирование еще раз? Y(Д)/N(Н)')
+        answer = input()
+
+        if answer == 'Y' or answer == 'y' or answer == 'Д' or answer == 'д':
+            start_test()
+        elif answer == 'N' or answer == 'n' or answer == 'Н' or answer == 'н':
+            print('Спасибо. Удачи!')
+            break
+        else:
+            print('Не понял ваш ответ...')
+            continue
+
+    print('Результаты тестирования:')
+    name = 'Пользователь'
+    score = 'Счет'
+    grade = 'Диагноз'
+    print(f'{name:20}{score:20}{grade}')
+    file = open('test_results.txt', 'r')
+    lines = file.readlines()
+    for line in lines:
+        n = line.strip().split(',')
+        for i in n:
+            print(f'{i:20}', end='')
+        print()
+
+    file.close()
+
+
+play()
